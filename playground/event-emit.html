@@ -10,8 +10,9 @@
 <body>
   <div id="app">
     <!-- <app-header v-on:하위 컴포넌트에서 발생한 이벤트 이름="상위 컴포넌트의 메서드 이름"></app-header> -->
+    <p>num: {{num}}</p>
     <app-header v-on:pass="logText"></app-header>
-    <app-content v-on:add="addNum" v-bind:propsdata="num"></app-content>
+    <app-content v-on:increase="increaseNum" v-bind:propsdata="num"></app-content>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -25,10 +26,10 @@
       }
     }
     const appContent = {
-      template: '<button v-on:click="addNumber">{{ propsdata }}</button>',
+      template: '<button v-on:click="passEvent">propsdata: {{ propsdata }}</button>',
       methods: {
-        addNumber: function () {
-          this.$emit('add')
+        passEvent: function () {
+          this.$emit('increase')
         }
       },
       props: ['propsdata']
@@ -44,7 +45,7 @@
         logText: function () {
           console.log('test');
         },
-        addNum: function () {
+        increaseNum: function () {
           ++this.num
         }
       },
