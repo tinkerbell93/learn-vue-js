@@ -11,21 +11,29 @@
   <div id="app">
     <app-header></app-header>
     <app-content></app-content>
+    <app-footer></app-footer>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script>
-    // 전역 컴포넌트
+    // 전역 컴포넌트 등록 방식
     // Vue.component('컴포넌트 이름', 컴포넌트 내용);
     Vue.component('app-header', {
       template: '<h1>Header</h1>' // react로 따지면 jsx?
     });
     Vue.component('app-content', {
-      template: '<section>content</section>'
+      template: '<main>main content</main>'
     })
 
     new Vue({
-      el: '#app'  // root component
+      el: '#app',  // root component
+      // 지역 컴포넌트 등록 방식
+      components: {
+        // '컴포넌트 이름': 컴포넌트 내용
+        'app-footer': {
+          template: '<footer>footer</footer>'
+        }
+      }
     });
   </script>
 </body>
