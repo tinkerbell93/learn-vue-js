@@ -11,6 +11,7 @@
   <div id="app">
     <!-- <app-header v-on:하위 컴포넌트에서 발생한 이벤트 이름="상위 컴포넌트의 메서드 이름"></app-header> -->
     <app-header v-on:pass="logText"></app-header>
+    <app-content v-on:add="addNum" v-bind:propsdata="num"></app-content>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -23,16 +24,32 @@
         }
       }
     }
+    const appContent = {
+      template: '<button v-on:click="addNumber">{{ propsdata }}</button>',
+      methods: {
+        addNumber: function () {
+          this.$emit('add')
+        }
+      },
+      props: ['propsdata']
+    }
 
     new Vue({
       el: '#app',
       components: {
-        'app-header': appHeader
+        'app-header': appHeader,
+        'app-content': appContent
       },
       methods: {
         logText: function () {
           console.log('test');
+        },
+        addNum: function () {
+          ++this.num
         }
+      },
+      data: {
+        num: 10
       }
     })
   </script>
