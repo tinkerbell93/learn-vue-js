@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>component same level</title>
+</head>
+
+<body>
+  <div id="app">
+    <app-header v-bind:propsdata="num"></app-header>
+    <app-content v-on:pass="passNum"></app-content>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    const appHeader = {
+      template: '<header>header</header>',
+      props: ['propsdata'],
+    }
+    const appContent = {
+      template: '<main>content<button v-on:click="passNum">pass</button></main>',
+      methods: {
+        passNum: function () {
+          this.$emit('pass', 10)
+        }
+      }
+    }
+
+    new Vue({
+      el: '#app',
+      components: {
+        'app-header': appHeader,
+        'app-content': appContent,
+      },
+      data: {
+        num: 0
+      },
+      methods: {
+        passNum: function (num) {
+          this.num = num;
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
