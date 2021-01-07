@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko-KR">
 
 <head>
   <meta charset="UTF-8">
@@ -10,20 +10,20 @@
 <body>
   <div id="app">
     <app-header v-bind:propsdata="num"></app-header>
-    <app-content v-on:pass="passNum"></app-content>
+    <app-content v-on:pass="deliverNum"></app-content>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script>
     const appHeader = {
-      template: '<header>header</header>',
+      template: '<header>{{ propsdata }}</header>',
       props: ['propsdata'],
     }
     const appContent = {
       template: '<main>content<button v-on:click="passNum">pass</button></main>',
       methods: {
         passNum: function () {
-          this.$emit('pass', 10)
+          this.$emit('pass', 10);
         }
       }
     }
@@ -38,8 +38,8 @@
         num: 0
       },
       methods: {
-        passNum: function (num) {
-          this.num = num;
+        deliverNum: function (num) {
+          this.num += num;
         }
       }
     });
