@@ -8,18 +8,39 @@
 </head>
 
 <body>
-  <div id="app"></div>
+  <div id="app">
+    <router-view></router-view>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
   <script>
-    const router = new VueRouter({
+    const LoginComponent = {
+      template: '<div>login</div>'
+    }
+    const MainComponent = {
+      template: '<div>main</div>'
+    }
 
+    const router = new VueRouter({
+      // 페이지의 라우팅 정보 (어떤 url로 접근했을 때 어떤 페이지가 보일 것인지)
+      routes: [
+        {
+          // 페이지의 url 이름
+          path: '/login',
+          // 해당 url에서 표시될 컴포넌트
+          component: LoginComponent
+        },
+        {
+          path: '/main',
+          component: MainComponent
+        }
+      ]
     });
 
     new Vue({
       el: '#app',
-      router: router,
+      router,
     });
   </script>
 </body>
