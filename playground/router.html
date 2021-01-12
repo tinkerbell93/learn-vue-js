@@ -9,6 +9,10 @@
 
 <body>
   <div id="app">
+    <div>
+      <router-link to="/login">Login</router-link>
+      <router-link to="/main">Main</router-link>
+    </div>
     <router-view></router-view>
   </div>
 
@@ -16,10 +20,10 @@
   <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
   <script>
     const LoginComponent = {
-      template: '<div>login</div>'
+      template: '<h1>login</h1>'
     }
     const MainComponent = {
-      template: '<div>main</div>'
+      template: '<h1>main</h1>'
     }
 
     const router = new VueRouter({
