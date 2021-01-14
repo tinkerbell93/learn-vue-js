@@ -11,6 +11,7 @@
 <body>
   <div id="app">
     <button v-on:click="getData">get user</button>
+    <div>{{ users }}</div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -28,6 +29,8 @@
           axios.get('https://jsonplaceholder.typicode.com/users/')
             .then(function (response) {
               console.log(response.data);
+              // 호출하기 전 this와 비동기 처리 후 들어온 this는 다르다.
+              // this.users = response.data;
               vm.users = response.data;
             })
             .catch(function (error) {
