@@ -9,15 +9,18 @@
 
 <body>
   <div id="app">
-    <p>{{ num }}</p>
+    <!-- data 조작만으로 전체적인 DOM까지 변경 가능 -->
+    <p v-bind:id="uuid">{{ num }}</p>
     <p>{{ doubleNum }}</p>
   </div>
+
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script>
     new Vue({
       el: '#app',
       data: {
         num: 10,
+        uuid: 'abc'
       },
       // data 값이 바뀔 때 함께 바뀌는 값을 정의
       computed: {
@@ -25,7 +28,6 @@
           return this.num * 2;
         }
       }
-
     })
   </script>
 </body>
