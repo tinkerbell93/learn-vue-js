@@ -10,8 +10,19 @@
 <body>
   <div id="app">
     <!-- data 조작만으로 전체적인 DOM까지 변경 가능 -->
-    <p v-bind:id="uuid">{{ num }}</p>
+    <p v-bind:id="uuid" v-bind:class="name">{{ num }}</p>
     <p>{{ doubleNum }}</p>
+    <!-- DOM에서 안남음 -->
+    <div v-if="loading">
+      Loading..1
+    </div>
+    <div v-else>
+      test user has been logged in
+    </div>
+    <!-- DOM에는 남아있음 -->
+    <div v-show="loading">
+      Loading..2
+    </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -20,7 +31,9 @@
       el: '#app',
       data: {
         num: 10,
-        uuid: 'abc'
+        uuid: 'abc',
+        name: 'text-blue',
+        loading: true
       },
       // data 값이 바뀔 때 함께 바뀌는 값을 정의
       computed: {
