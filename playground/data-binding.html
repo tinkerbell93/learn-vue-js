@@ -23,6 +23,10 @@
     <div v-show="loading">
       Loading..2
     </div>
+
+    <!-- data input 동기화 -->
+    <input v-model="message" placeholder="edit me" type="text">
+    <p>{{ message }}</p>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -33,7 +37,8 @@
         num: 10,
         uuid: 'abc',
         name: 'text-blue',
-        loading: true
+        loading: true,
+        message: ''
       },
       // data 값이 바뀔 때 함께 바뀌는 값을 정의
       computed: {
