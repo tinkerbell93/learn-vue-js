@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>watch</title>
+</head>
+
+<body>
+  <div id="app">
+    {{ num }}
+    <button v-on:click="addNum">increase</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        num: 10
+      },
+      // data의 변화에 따라 특정 로직을 실행시킬 수 있음
+      watch: {
+        num: function () {
+          this.logText();
+        }
+      },
+      methods: {
+        addNum: function () {
+          this.num = this.num + 1;
+        },
+        logText: function () {
+          console.log('changed');
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
